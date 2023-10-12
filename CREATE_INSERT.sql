@@ -1,0 +1,310 @@
+-- Create datbase sql_project
+
+CREATE DATABASE sql_project;
+use  sql_project;
+
+ 
+-- create table suppliers and inserted data into it
+
+ 
+CREATE TABLE suppliers 
+(
+s_id int NOT NULL primary key,
+supplier varchar(100)
+);
+
+
+INSERT INTO suppliers VALUES
+(1,"HeroMotor Company"),
+(2,"HondaMotor Company"),
+(3,"TVSMotor Company"),
+(4,"BajajAuto Company"),
+(5,"YamahaMotor Company"),
+(6,"RoyalEnfield Company"),
+(7,"SuzukiMotor Company"),
+(8,"Piaggio Company"),
+(9,"MahindraMotor Company"),
+(10,"UMLohia Company");
+
+select * from suppliers;
+
+
+-- create table products and inserted data into it
+
+CREATE TABLE products
+(
+p_id int NOT NULL primary key,
+ProductName varchar(100),
+PartNumber varchar(100),
+ProductLabel varchar(100),
+StartingInventory date,
+InventoryReceived date,
+InventoryShipped date,
+InventoryOnHand date,
+MinimumRequired int
+);
+
+
+INSERT INTO products (p_id, ProductName, PartNumber, ProductLabel, StartingInventory, InventoryReceived, InventoryShipped, InventoryOnHand, MinimumRequired) VALUES 
+(1, 'Yamaha', 'YZF-R15', 'Yamaha YZF-R15', '2012-02-27', '2013-01-25', '2014-03-15', '2015-11-03', 2),
+(2, 'Bajaj Pulsar', 'CC-150', 'BajajPulsar CC-150', '2005-04-21', '2012-10-01', '2014-10-14', '2015-11-27', 5),
+(3, 'RoyalEnfield', 'Classic-350', 'RoyalEnfield Classic-350', '2009-01-11', '2012-02-24', '2013-06-20', '2014-10-30', 4),
+(4, 'Honda', 'SP-125', 'Honda SP-125', '2008-04-14', '2011-09-17', '2012-05-28', '2013-11-05', 6),
+(5, 'TVS Apache', 'RTR-160', 'TVS ApacheRTR-160', '2012-11-01', '2013-01-24', '2015-04-03', '2017-08-06', 5),
+(6, 'HondaShine', 'HS-100', 'HondaShine HS-100', '2010-01-31', '2011-01-09', '2015-12-18', '2016-09-14', 10),
+(7, 'Bajaj Dominar', 'D-400', 'Bajaj Dominar D-400', '2012-08-07', '2014-03-16', '2015-10-18', '2020-01-20', 4),
+(8, 'KawasakiNinja', 'ZX-10r', 'KawasakiNinja ZX-10r', '2001-09-17', '2004-02-28', '2005-10-18', '2010-11-12', 5),
+(9, 'Suzuki', 'GSX_R1000', 'Suzuki GSX_R1000', '2014-10-27', '2019-06-23', '2020-10-01', '2022-07-25', 8),
+(10, 'TVSNtorq', 'N-125', 'TVSNtorq N-125', '2001-12-21', '2007-04-23', '2015-02-21', '2020-08-13', 5),
+(11, 'BajajPulsar', 'P-200', 'BajajPulsar P-200', '2012-01-15', '2016-10-12', '2017-10-05', '2021-04-22', 5),
+(12, 'RoyalEnfield', 'Himalayan-350', 'RoyalEnfield Himalayan-350', '2001-05-28', '2003-07-30', '2007-04-17', '2008-01-17', 3),
+(13, 'RoyalEnfield', 'GT-600', 'Continental-GT', '2005-02-23', '2007-01-12', '2008-04-11', '2010-10-08', 7),
+(14, 'Honda', 'Activa-100', 'HondaActiva-100', '2005-12-29', '2006-03-13', '2008-01-21', '2012-05-11', 10),
+(15, 'BMW', 'S-1000', 'BMW S-1000', '2012-08-16', '2014-12-16', '2016-01-12', '2017-01-12', 8),
+(16, 'Yamaha', 'MT-15', 'Yamaha MT-15', '2016-03-24', '2017-10-18', '2018-05-04', '2020-01-14', 8),
+(17, 'RoyalEnfield', 'Hunter-350', 'RoyalEnfield Hunter-350', '2015-08-31', '2018-05-02', '2019-06-13', '2022-02-05', 8),
+(18, 'Honda Unicorn', 'CC-200', 'Honda Unicorn CC-200', '2011-10-10', '2012-07-02', '2015-05-12', '2021-10-15', 10),
+(19, 'Yamaha', 'FZ-125', 'Yamaha FZ-125', '2016-07-27', '2019-03-31', '2020-02-17', '2022-07-06', 6),
+(20, 'RoyalEnfield', 'Standard-500', 'RoyalEnfield Standard-500', '2010-06-17', '2011-12-10', '2013-01-25', '2016-05-23', 3);
+
+select * from products; 
+
+
+
+-- create table orderss and inserted data into it
+
+CREATE TABLE orderss
+(
+o_id int NOT NULL primary key,
+Title varchar(100),
+firsts  varchar(100),
+Middle varchar(100),
+Lasts varchar(100),
+Product_ID int,
+NumberShipped int,
+OrderDate date,
+foreign key (Product_ID) references products(p_id) 
+);
+
+INSERT INTO orderss (o_id, Title, firsts, Middle, Lasts, Product_ID, NumberShipped, OrderDate) VALUES
+(1, 'Rev', 'Farra', 'Adolf', 'Ashplant', 7, 33, '2005-11-30'),
+(2, 'Dr', 'Kory', 'Palm', 'Crayk', 9, 95, '2020-04-08'),
+(3, 'Dr', 'Ezra', 'Merry', 'Rickesies', 12, 97, '2000-04-15'),
+(4, 'Honorable', 'Orelle', 'Germana', 'Zealey', 10, 93, '2018-11-13'),
+(5, 'Mrs', 'Anita', 'Daphene', 'Hoyt', 14, 37, '2003-07-27'),
+(6, 'Honorable', 'Jo-ann', 'Patrice', 'Frape', 11, 87, '2001-03-29'),
+(7, 'Mrs', 'Blakelee', 'Larine', 'Hill', 16, 66, '2012-01-29'),
+(8, 'Ms', 'Merline', 'Jeanie', 'Colquyte', 16, 6, '2000-09-26'),
+(9, 'Honorable', 'Geri', 'Marji', 'Say', 13, 56, '2011-01-15'),
+(10, 'Dr', 'Fionnula', 'Robbert', 'Darcey', 16, 88, '2019-03-01'),
+(11, 'Dr', 'Gerrie', 'Paten', 'Beadman', 15, 58, '2011-02-23'),
+(12, 'Rev', 'Bride', 'Tamma', 'Gracewood', 3, 88, '2004-06-09'),
+(13, 'Mr', 'Cullin', 'Reuven', 'Heinzler', 16, 2, '2012-09-25'),
+(14, 'Rev', 'Anatole', 'Jamesy', 'Karpe', 13, 30, '2001-09-24'),
+(15, 'Ms', 'Odey', 'Oneida', 'Paulucci', 1, 61, '2020-04-16'),
+(16, 'Mr', 'Shermie', 'Gilligan', 'Sante', 7, 94, '2010-05-25'),
+(17, 'Rev', 'Ernest', 'Karlis', 'Tayt', 10, 59, '2022-06-23'),
+(18, 'Mrs', 'Izzy', 'Bendite', 'Whitham', 13, 70, '2006-07-06'),
+(19, 'Dr', 'Jeremie', 'Dennison', 'Male', 3, 59, '2013-11-02'),
+(20, 'Ms', 'Gabrila', 'Lilah', 'Luggar', 11, 9, '2019-01-29'),
+(21, 'Ms', 'Josephine', 'Carlin', 'Sinton', 19, 21, '2002-02-17'),
+(22, 'Mr', 'Gertie', 'Errol', 'Lamartine', 3, 33, '2002-10-14'),
+(23, 'Dr', 'Daveta', 'Teddi', 'Jakeway', 16, 24, '2000-08-31'),
+(24, 'Rev', 'Douglass', 'Marmaduke', 'Breffit', 14, 4, '2016-07-28'),
+(25, 'Honorable', 'Jana', 'Julina', 'Bartosinski', 5, 96, '2015-10-01'),
+(26, 'Ms', 'Dolli', 'Abdel', 'Folan', 10, 100, '2012-08-05'),
+(27, 'Mr', 'Katey', 'Kerrin', 'Gatiss', 20, 74, '2020-01-04'),
+(28, 'Honorable', 'Matthiew', 'Antony', 'Itzhaki', 12, 89, '2020-10-31'),
+(29, 'Mrs', 'Meredith', 'Alfy', 'Westmacott', 15, 24, '2000-09-26'),
+(30, 'Honorable', 'Jerrylee', 'Terrye', 'Linbohm', 1, 55, '2004-07-03'),
+(31, 'Rev', 'Arlan', 'Clemmie', 'Blackah', 18, 13, '2005-09-11'),
+(32, 'Honorable', 'Moria', 'Emmalynn', 'Beedham', 20, 60, '2010-06-25'),
+(33, 'Mrs', 'Niels', 'Waverley', 'Flament', 4, 89, '2011-09-21'),
+(34, 'Rev', 'Grethel', 'Glennie', 'Wines', 9, 33, '2014-03-28'),
+(35, 'Honorable', 'Ardeen', 'Pail', 'Ramsay', 4, 13, '2015-09-12'),
+(36, 'Mrs', 'Brantley', 'Mitchael', 'Laird', 12, 56, '2021-11-26'),
+(37, 'Ms', 'Roth', 'Aloin', 'Sindell', 4, 50, '2010-09-25'),
+(38, 'Dr', 'Micaela', 'Ayn', 'Renshall', 18, 32, '2003-06-05'),
+(39, 'Dr', 'Jeniece', 'Donielle', 'Donisi', 6, 79, '2009-04-27'),
+(40, 'Dr', 'Iona', 'Aline', 'Setterfield', 3, 40, '2004-10-04'),
+(41, 'Rev', 'Arleen', 'Mandi', 'Demangeon', 3, 92, '2022-05-27'),
+(42, 'Mr', 'Shanta', 'Nancee', 'Vasilkov', 18, 46, '2010-10-20'),
+(43, 'Honorable', 'Fergus', 'Lowell', 'Skypp', 3, 71, '2013-07-25'),
+(44, 'Mr', 'Abbye', 'Cairistiona', 'Ferrucci', 3, 44, '2017-03-09'),
+(45, 'Honorable', 'Rooney', 'Fredi', 'Farrance', 20, 30, '2010-08-24'),
+(46, 'Rev', 'Dona', 'Ingaberg', 'Chander', 19, 87, '2020-08-16'),
+(47, 'Dr', 'Rosanna', 'Bay', 'Riggulsford', 17, 78, '2010-08-31'),
+(48, 'Honorable', 'Basile', 'Piggy', 'Bailes', 17, 51, '2017-05-29'),
+(49, 'Rev', 'Roosevelt', 'Vally', 'Di Franceschi', 1, 100, '2005-07-05'),
+(50, 'Mr', 'Carmelle', 'Ahmad', 'Simenon', 18, 33, '2017-06-07'),
+(51, 'Honorable', 'Chrystal', 'Jocko', 'Frays', 4, 82, '2021-09-26'),
+(52, 'Ms', 'Stace', 'Cecil', 'Lampart', 9, 79, '2001-12-17'),
+(53, 'Mrs', 'Kary', 'Winna', 'Akitt', 14, 23, '2009-10-25'),
+(54, 'Mrs', 'Melisent', 'Creighton', 'Danskine', 4, 97, '2008-01-07'),
+(55, 'Mrs', 'Aguistin', 'Fiona', 'Hext', 13, 70, '2004-01-18'),
+(56, 'Dr', 'Ardelis', 'Jeffry', 'Tuley', 9, 3, '2010-04-02'),
+(57, 'Mr', 'Marcy', 'Yurik', 'Blas', 19, 70, '2014-11-05'),
+(58, 'Honorable', 'Alidia', 'Keefer', 'MacCulloch', 14, 12, '2010-05-27'),
+(59, 'Mr', 'Wynn', 'Harrison', 'O''Doherty', 1, 41, '2000-04-20'),
+(60, 'Dr', 'Jacques', 'Tiffany', 'Robbe', 3, 55, '2011-07-21'),
+(61, 'Ms', 'Booth', 'Pren', 'Faherty', 17, 23, '2003-09-14'),
+(62, 'Mr', 'Emilio', 'Rustin', 'Dumbelton', 1, 10, '2011-07-27'),
+(63, 'Rev', 'Imelda', 'Rowland', 'Berkley', 11, 78, '2021-07-26'),
+(64, 'Ms', 'Cello', 'Mohandas', 'Blessed', 6, 71, '2013-01-02'),
+(65, 'Ms', 'Mychal', 'Jedediah', 'Brunton', 8, 54, '2005-07-14'),
+(66, 'Honorable', 'Kincaid', 'Archaimbaud', 'Rumgay', 11, 85, '2000-03-24'),
+(67, 'Mrs', 'Katharine', 'Dulci', 'Duggen', 5, 61, '2009-04-30'),
+(68, 'Rev', 'Steffi', 'Aurlie', 'Gudde', 14, 33, '2008-06-04'),
+(69, 'Ms', 'Bond', 'Karmen', 'Mulgrew', 11, 54, '2007-08-15'),
+(70, 'Rev', 'Roderic', 'Merrill', 'Kleinmann', 8, 30, '2014-01-01'),
+(71, 'Mr', 'Jessy', 'Kin', 'Pegler', 15, 98, '2001-12-04'),
+(72, 'Mrs', 'Ryann', 'Perkin', 'Dondon', 19, 72, '2021-08-27'),
+(73, 'Honorable', 'Ulrika', 'Harvey', 'Thames', 17, 59, '2022-04-13'),
+(74, 'Mrs', 'Morgana', 'Johanna', 'Le Barr', 3, 35, '2007-04-21'),
+(75, 'Ms', 'Nicholle', 'Zachery', 'Render', 11, 56, '2014-09-18'),
+(76, 'Mr', 'Cindee', 'Roslyn', 'Gercke', 9, 67, '2007-07-05'),
+(77, 'Dr', 'Sydel', 'Danice', 'Calafato', 20, 26, '2021-04-29'),
+(78, 'Rev', 'Kore', 'Bobine', 'Darbishire', 7, 1, '2020-08-07'),
+(79, 'Dr', 'Lula', 'Hedvige', 'Houldey', 20, 63, '2022-12-11'),
+(80, 'Ms', 'Teri', 'Salvador', 'Mc-Kerley', 10, 39, '2022-12-09'),
+(81, 'Mr', 'Hermy', 'Christy', 'Borham', 2, 81, '2016-10-10'),
+(82, 'Honorable', 'Dael', 'Jennie', 'Amphlett', 12, 52, '2003-07-17'),
+(83, 'Mrs', 'Carmelina', 'Kendrick', 'Highman', 1, 16, '2005-02-13'),
+(84, 'Mrs', 'Cher', 'Audie', 'Jeandet', 14, 12, '2016-04-30'),
+(85, 'Mrs', 'Connie', 'Addison', 'Bullar', 2, 68, '2017-10-16'),
+(86, 'Ms', 'Bobbie', 'Regine', 'Pietzke', 9, 24, '2005-09-05'),
+(87, 'Ms', 'Dara', 'Tallie', 'Millyard', 6, 89, '2010-01-18'),
+(88, 'Mr', 'Rickey', 'Mahala', 'Armin', 6, 66, '2021-03-21'),
+(89, 'Honorable', 'Wilbert', 'Irena', 'Dennidge', 5, 37, '2011-01-01'),
+(90, 'Mrs', 'Dorelle', 'Tobias', 'Sparks', 20, 47, '2017-09-17'),
+(91, 'Mrs', 'Laird', 'Ruthy', 'Eskrigge', 5, 54, '2012-09-17'),
+(92, 'Mrs', 'Cristina', 'Cletus', 'Salterne', 15, 65, '2013-05-31'),
+(93, 'Mrs', 'Siegfried', 'Kellie', 'Piwall', 2, 15, '2018-06-02'),
+(94, 'Ms', 'Janos', 'Zorana', 'Caldera', 14, 20, '2012-06-25'),
+(95, 'Dr', 'Eleanore', 'Richardo', 'Feehery', 18, 42, '2009-06-12'),
+(96, 'Honorable', 'Willette', 'Elias', 'Denzey', 14, 65, '2020-10-25'),
+(97, 'Honorable', 'Sib', 'Merry', 'Strephan', 9, 99, '2005-06-01'),
+(98, 'Mr', 'Andromache', 'Rhianna', 'Halfhide', 19, 68, '2018-07-17'),
+(99, 'Honorable', 'Kaspar', 'Juli', 'Kibbye', 18, 76, '2005-06-01'),
+(100, 'Rev', 'Eadie', 'Sashenka', 'Shillabeer', 18, 33, '2022-08-11');
+
+select * from orderss; 
+
+
+-- create table purchases and inserted data into it
+
+CREATE TABLE purchases 
+(
+pur_id int NOT NULL primary key,
+Supplier_ID int,
+Product_ID int,
+NumberReceived int,
+PurchaseDate date,
+foreign key (Supplier_ID) references suppliers(s_id),
+foreign key (Product_ID) references products(p_id)
+);
+
+
+INSERT INTO purchases (pur_id, Supplier_ID, Product_ID, NumberReceived, PurchaseDate) VALUES 
+(1, 9, 12, 9, '2010-05-22'),
+(2, 6, 20, 3, '2001-11-10'),
+(3, 7, 1, 5, '2014-05-22'),
+(4, 10, 14, 2, '2012-11-26'),
+(5, 2, 19, 5, '2003-03-04'),
+(6, 3, 1, 6, '2010-03-18'),
+(7, 2, 16, 10, '2003-11-25'),
+(8, 3, 3, 9, '2015-12-27'),
+(9, 8, 1, 9, '2010-09-15'),
+(10, 3, 11, 1, '2016-03-17'),
+(11, 3, 7, 8, '2015-01-31'),
+(12, 10, 4, 3, '2019-07-17'),
+(13, 6, 18, 5, '2014-07-04'),
+(14, 4, 3, 7, '2007-01-12'),
+(15, 3, 2, 1, '2023-09-17'),
+(16, 6, 18, 7, '2001-03-14'),
+(17, 6, 15, 5, '2020-12-07'),
+(18, 9, 2, 3, '2016-02-21'),
+(19, 3, 5, 2, '2012-05-23'),
+(20, 2, 12, 2, '2016-04-15'),
+(21, 1, 20, 8, '2007-06-05'),
+(22, 10, 16, 1, '2004-02-05'),
+(23, 9, 15, 6, '2018-03-28'),
+(24, 1, 18, 6, '2020-12-08'),
+(25, 4, 5, 10, '2011-07-23'),
+(26, 7, 13, 6, '2005-08-25'),
+(27, 4, 17, 4, '2016-01-27'),
+(28, 1, 20, 9, '2020-09-18'),
+(29, 3, 14, 9, '2016-06-22'),
+(30, 10, 2, 10, '2011-08-22'),
+(31, 1, 3, 2, '2011-03-13'),
+(32, 7, 14, 8, '2019-08-22'),
+(33, 5, 1, 4, '2008-04-10'),
+(34, 2, 15, 5, '2012-02-04'),
+(35, 7, 5, 3, '2022-03-04'),
+(36, 10, 19, 7, '2012-11-01'),
+(37, 5, 9, 8, '2001-03-15'),
+(38, 7, 9, 8, '2003-11-07'),
+(39, 9, 8, 9, '2020-10-05'),
+(40, 3, 3, 10, '2012-08-12'),
+(41, 5, 5, 6, '2020-04-15'),
+(42, 5, 12, 9, '2009-04-21'),
+(43, 10, 17, 10, '2008-03-09'),
+(44, 4, 18, 8, '2013-10-28'),
+(45, 8, 19, 5, '2022-08-31'),
+(46, 5, 10, 3, '2018-12-28'),
+(47, 3, 2, 9, '2003-10-13'),
+(48, 6, 16, 7, '2009-05-10'),
+(49, 8, 16, 6, '2006-03-05'),
+(50, 8, 6, 1, '2004-03-31'),
+(51, 2, 8, 3, '2003-03-11'),
+(52, 9, 4, 6, '2014-11-01'),
+(53, 8, 13, 9, '2013-04-24'),
+(54, 3, 15, 4, '2014-06-01'),
+(55, 4, 19, 9, '2000-04-25'),
+(56, 2, 10, 9, '2009-10-02'),
+(57, 7, 1, 7, '2006-11-03'),
+(58, 7, 16, 3, '2006-09-20'),
+(59, 4, 10, 6, '2021-02-14'),
+(60, 10, 10, 8, '2009-07-20'),
+(61, 5, 7, 4, '2021-03-15'),
+(62, 5, 4, 6, '2021-09-08'),
+(63, 3, 12, 3, '2003-10-18'),
+(64, 4, 12, 5, '2015-01-01'),
+(65, 6, 7, 6, '2016-10-17'),
+(66, 5, 6, 6, '2021-12-15'),
+(67, 7, 13, 5, '2022-02-19'),
+(68, 10, 4, 2, '2003-03-19'),
+(69, 3, 14, 1, '2021-11-07'),
+(70, 6, 9, 7, '2019-03-23'),
+(71, 1, 3, 7, '2002-06-10'),
+(72, 8, 13, 6, '2021-07-17'),
+(73, 7, 2, 9, '2011-03-18'),
+(74, 7, 11, 6, '2005-02-09'),
+(75, 2, 15, 10, '2016-01-18'),
+(76, 1, 4, 2, '2014-02-19'),
+(77, 10, 15, 2, '2000-01-31'),
+(78, 6, 17, 3, '2023-01-21'),
+(79, 4, 5, 6, '2009-03-15'),
+(80, 5, 7, 8, '2019-02-21'),
+(81, 8, 8, 10, '2019-08-11'),
+(82, 4, 19, 7, '2017-12-31'),
+(83, 5, 15, 1, '2005-05-27'),
+(84, 6, 15, 5, '2022-07-29'),
+(85, 6, 20, 3, '2000-12-08'),
+(86, 5, 18, 8, '2005-05-25'),
+(87, 9, 8, 8, '2015-10-03'),
+(88, 8, 18, 3, '2003-06-09'),
+(89, 1, 13, 3, '2009-09-15'),
+(90, 2, 9, 4, '2019-03-25'),
+(91, 6, 18, 9, '2013-09-26'),
+(92, 2, 18, 4, '2010-07-15'),
+(93, 1, 12, 7, '2005-04-12'),
+(94, 9, 11, 9, '2011-10-06'),
+(95, 9, 7, 6, '2012-11-23'),
+(96, 7, 18, 5, '2009-06-22'),
+(97, 9, 16, 4, '2002-06-10'),
+(98, 10, 18, 3, '2010-05-25'),
+(99, 5, 7, 3, '2013-01-09'),
+(100, 6, 8, 5, '2008-02-07');
+
+select * from purchases;
